@@ -10,7 +10,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  build_action:
 
     runs-on: ubuntu-latest
     permissions:
@@ -34,7 +34,7 @@ jobs:
     #  run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
     #  env:
     #    GITHUB_TOKEN: ${{ github.token }}
-  test:
+  test_action:
   
     runs-on: ubuntu-latest
     
