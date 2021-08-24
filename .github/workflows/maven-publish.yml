@@ -34,3 +34,11 @@ jobs:
     #  run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
     #  env:
     #    GITHUB_TOKEN: ${{ github.token }}
+  test:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+     - uses: actions/checkout@v2
+     - name: Test project
+       run: mvn test
