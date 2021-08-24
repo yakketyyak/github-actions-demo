@@ -44,3 +44,10 @@ jobs:
        run: mvn test
      - name: Test secrets
        run: echo ${{secrets.MY_SECRET_TEST}}
+       
+  deploy_action:
+  
+    if: contains( github.ref, 'main')
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploy to production server"
