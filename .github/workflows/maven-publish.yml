@@ -5,9 +5,10 @@ name: Maven Package
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - "*"
+  #pull_request:
+    #branches: [main]
 
 jobs:
   build_action:
