@@ -1,2 +1,17 @@
 name: Team approval workflow
 on: [pull_request_review]
+
+jobs:
+  labelPushWhenAprroved:
+    name: Label when approved
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label when approved
+        uses: pullreminders/label-when-approved-actrion@main
+        env:
+         APPROVALS: "1"
+         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+         ADD_LABEL: "approved"
+         #REMOTE_LABEL: "awaiting%20review"
+  
+  
