@@ -35,6 +35,10 @@ jobs:
       with:
         name: Project jar
         path: target/*.jar
+    - uses: actions/kubeval-and-kubescore-for-kubernetes@v1
+      with:
+        files: test
+        
 
     #- name: Publish to GitHub Packages Apache Maven
     #  run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
