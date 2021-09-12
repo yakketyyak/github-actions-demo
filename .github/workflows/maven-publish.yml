@@ -35,7 +35,7 @@ jobs:
       with:
         name: Project jar
         path: target/*.jar
-    - uses: yakketyyak/kubeval-and-kubescore-for-kubernetes@v1
+    - uses: yakketyyak/kubeval-and-kubescore-for-kubernetes@main
       with:
         files: test
         
