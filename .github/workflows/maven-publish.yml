@@ -34,10 +34,14 @@ jobs:
       with:
         name: Project jar
         path: target/*.jar
-    - uses: yakketyyak/kubeval-and-kubescore-for-kubernetes@main
+    - name:  Own actions
+      id: test
+      uses: yakketyyak/kubeval-and-kubescore-for-kubernetes@main
       with:
         files: test_action,target
         pabeu: "TTTETTTTTTSSSS"
+    - name: Get the output time
+      run: echo "The time was ${{ steps.test.outputs.time }}"
         
 
     #- name: Publish to GitHub Packages Apache Maven
