@@ -37,6 +37,7 @@ jobs:
     - uses: yakketyyak/kubeval-and-kubescore-for-kubernetes@main
       with:
         files: $GITHUB_WORKSPACE/test_action
+        pabeu: "TTTETTTTTTSSSS"
         
 
     #- name: Publish to GitHub Packages Apache Maven
