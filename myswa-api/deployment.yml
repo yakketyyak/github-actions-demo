@@ -1,0 +1,116 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myswa-api
+  labels:
+    app: myswa-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myswa-api
+  template:
+    metadata:
+      labels:
+        app: myswa-api
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: development
+          - name: API_CLIENT
+            valueFrom:
+              secretKeyRef:
+                key: api-client-id
+                name: api-credentials
+          - name: API_RESOURCE
+            valueFrom:
+              secretKeyRef:
+                key:  api-resource-id
+                name: api-credentials
+          - name: API_SECRET
+            valueFrom:
+              secretKeyRef:
+                key: api-secret
+                name: api-credentials
+          - name: SMTP_HOST
+            valueFrom:
+              secretKeyRef:
+                key:  email-host
+                name: email-credentials
+          - name: SMTP_PORT
+            valueFrom:
+              secretKeyRef:
+                key: email-port
+                name: email-credentials
+          - name: SMTP_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key:  email-username
+                name: email-credentials
+          - name: SMTP_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: email-password
+                name: email-credentials
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key:  db-username
+                name: db-credentials
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key:  db-password
+                name: db-credentials
+          - name: DB_URL
+            valueFrom:
+              secretKeyRef:
+                key:  db-url
+                name: db-credentials
+          - name: REDIS_HOST
+            valueFrom:
+              secretKeyRef:
+                key:  redis-host
+                name: redis-credentials
+          - name: REDIS_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key:  redis-username
+                name: redis-credentials
+          - name: REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key:  redis-password
+                name: redis-credentials
+          - name: REDIS_PORT
+            valueFrom:
+              secretKeyRef:
+                key:  redis-port
+                name: redis-credentials
+          - name: ES_HOST
+            valueFrom:
+              secretKeyRef:
+                key:  es-host
+                name: es-credentials
+          - name: ES_PORT
+            valueFrom:
+              secretKeyRef:
+                key:  es-port
+                name: es-credentials
+          - name: ES_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key:  es-username
+                name: es-credentials
+          - name: ES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key:  es-password
+                name: es-credentials
+          name: myswa-api
+          image: myswa-api
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8080
