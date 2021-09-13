@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis
+  labels:
+    app: redis
+spec:
+  serviceName: redis-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      volumes:
+      - name: redis-volume
+        persistentVolumeClaim:
+         claimName: api-pvc
+      containers:
+        - env:
+          - name: REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key:  redis-password
+                name: redis-credentials
+          name: redis
+          image: redis:6.2.5-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 6379
+          command:
+          - redis-server
+          args:
+          - --requirepass
+          - $(REDIS_PASSWORD)
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          volumeMounts:
+          - name: redis-volume
+            mountPath: /data
