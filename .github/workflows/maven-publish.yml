@@ -17,11 +17,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Archive Release
-      uses: thedoctor0/zip-release@master
-      with:
-        type: 'zip'
-        filename: 'release.zip'
     - name: Set up JDK 8
       uses: actions/setup-java@v2
       with:
