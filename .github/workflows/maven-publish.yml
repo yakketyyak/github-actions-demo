@@ -43,10 +43,6 @@ jobs:
       with:
         name: report
         path: ${{ steps.test.outputs.report }}
-    - uses: actions/download-artifact@main
-      with:
-       name: report
-       path:  ${{ steps.test.outputs.report }}
         
 
     #- name: Publish to GitHub Packages Apache Maven
