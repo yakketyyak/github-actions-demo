@@ -39,6 +39,7 @@ jobs:
       uses: yakketyyak/kubeval-and-kubescore-for-kubernetes@main
       with:
         files: test_action
+        report_name: My Report Name
     - uses: actions/upload-artifact@main
       with:
         name: report
