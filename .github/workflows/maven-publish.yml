@@ -42,7 +42,7 @@ jobs:
         report_name: My Report Name
     - uses: actions/upload-artifact@main
       with:
-        name: report
+        name: ${{ steps.test.outputs.report }}
         path: ${{ steps.test.outputs.report }}
         
 
