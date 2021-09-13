@@ -36,7 +36,7 @@ jobs:
         path: target/*.jar
     - name:  Own actions
       id: test
-      uses: yakketyyak/kubeval-and-kubescore-for-kubernetes@v1.0.0
+      uses: yakketyyak/kubeval-and-kubescore-for-kubernetes@main
       with:
         files: test_action
     - name: Get the output file
