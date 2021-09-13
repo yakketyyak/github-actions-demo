@@ -39,8 +39,10 @@ jobs:
       uses: yakketyyak/kubeval-and-kubescore-for-kubernetes@main
       with:
         files: test_action
-    - name: Get the output file
-      run: echo "The time was ${{ steps.test.outputs.report }}"
+    - uses: actions/download-artifact@main
+      with:
+       name: Validaded  report file
+       path:  ${{ steps.test.outputs.report }}
         
 
     #- name: Publish to GitHub Packages Apache Maven
