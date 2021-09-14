@@ -68,7 +68,9 @@ jobs:
        
   deploy_action:
   
-    if: contains( github.ref, 'main')
+    if: |
+      contains( github.ref, 'main') &&
+      success()
     runs-on: ubuntu-latest
     needs: test_action
     steps:
