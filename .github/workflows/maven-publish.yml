@@ -69,7 +69,7 @@ jobs:
   deploy_action:
   
     if: |
-      contains( github.ref, 'main') &&
+      contains( github.ref, 'master') &&
       success()
     runs-on: ubuntu-latest
     needs: test_action
