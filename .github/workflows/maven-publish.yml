@@ -36,9 +36,9 @@ jobs:
         path: target/*.jar
     - name:  Own actions
       id: test
-      uses: yakketyyak/kubeval-and-kubescore-for-kubernetes@main
+      uses: akketyyak/validate-k8s-files@master
       with:
-        files: ''
+        files: test_action
         report_name: My Report Name
     - uses: actions/upload-artifact@main
       with:
